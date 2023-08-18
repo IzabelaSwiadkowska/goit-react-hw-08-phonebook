@@ -1,18 +1,19 @@
-import { Flex, HStack, Spacer } from '@chakra-ui/react';
+import { Heading, HStack, Spacer } from '@chakra-ui/react';
 import { NavLink, Outlet } from 'react-router-dom';
+import { SNavLink } from './RootLayout.staled';
 
 export default function RootLayout() {
   return (
     <>
-      <Flex as="nav" p="10px">
+      <Heading>
         <NavLink to="/">HOME</NavLink>
 
         <Spacer />
         <HStack spacing="20px">
-          <NavLink>Sign Up</NavLink>
-          <NavLink>Login</NavLink>
+          <SNavLink to="register">Register</SNavLink>
+          <SNavLink to="login">Log In</SNavLink>
         </HStack>
-      </Flex>
+      </Heading>
       <Outlet />
     </>
   );

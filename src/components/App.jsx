@@ -1,24 +1,32 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/actions';
 import { Home } from 'pages/Home';
-import { Routes, Route } from 'react-router-dom';
+import { Contacts } from 'pages/Contacts';
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from 'react-router-dom';
 import RootLayout from 'components/RootLayout/RootLayout';
+import RegisterForm from './RegisterForm/RegisterForm';
+import LoginForm from './LoginForm/LoginForm';
+import NotFound from '../pages/NotFound';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Home />} />
+      <Route path="contacts" element={<Contacts />} />
+      <Route path="register" element={<RegisterForm />} />
+      <Route path="login" element={<LoginForm />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>
+  )
+);
 
 export const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
     <>
-      <Routes>
-        <Route path="/" element={<RootLayout />}>
-          <Route index element={<Home />} />
-        </Route>
-      </Routes>
+      <RouterProvider router={router} />
     </>
   );
 };
