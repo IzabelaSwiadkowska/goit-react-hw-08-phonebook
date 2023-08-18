@@ -10,6 +10,8 @@ import RootLayout from 'components/RootLayout/RootLayout';
 import RegisterForm from './RegisterForm/RegisterForm';
 import LoginForm from './LoginForm/LoginForm';
 import NotFound from '../pages/NotFound';
+import { Box } from '@chakra-ui/react';
+import { styles } from './RegisterForm/RegisterForm.styled';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,8 +27,8 @@ const router = createBrowserRouter(
 
 export const App = () => {
   return (
-    <>
+    <Box sx={styles}>
       <RouterProvider router={router} />
-    </>
+    </Box>
   );
 };

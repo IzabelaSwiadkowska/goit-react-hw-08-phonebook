@@ -7,12 +7,13 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { Form } from 'react-router-dom';
+import { styles } from './RegisterForm.styled';
 
 function RegisterForm() {
   return (
-    <Container backgroundImage="url('./components/images/phonebook.jpg')">
+    <Container sx={styles}>
       <Form>
-        <Text fontSize={30}> Create a new Phonebook account</Text>
+        <Text fontSize="3xl">Create a new Phonebook account</Text>
         <FormControl>
           <FormLabel fontSize={20} p="10px" mb="10px">
             Username

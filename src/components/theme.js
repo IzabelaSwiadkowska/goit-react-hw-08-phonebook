@@ -6,8 +6,7 @@ export const theme = extendTheme({
       // styles for the `body`
 
       body: {
-        bgImage:
-          'url(http://localhost:3000/goit-react-hw-08-phonebook/static/media/background.0018ba6b86c1f370cabf.jpg)',
+        bgImage: 'url(./images/background.jpg)',
         bgSize: 'cover',
         bgRepeat: 'no-repeat',
       },
