@@ -8,11 +8,28 @@ import {
 } from '@chakra-ui/react';
 import { Form } from 'react-router-dom';
 import { styles } from './RegisterForm.styled';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/actions';
 
 function RegisterForm() {
+  const dispatch = useDispatch();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      register({
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
+  };
+
   return (
     <Container sx={styles}>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Text fontSize="3xl">Create a new Phonebook account</Text>
         <FormControl>
           <FormLabel fontSize={20} p="10px" mb="10px">
@@ -31,7 +48,7 @@ function RegisterForm() {
             placeholder="enter your email"
             focusBorderColor="teal.400"
             type="text"
-            name="name"
+            name="email"
           />
 
           <FormLabel fontSize={20} p="10px" mb="10px">
@@ -41,7 +58,7 @@ function RegisterForm() {
             placeholder="enter your password"
             focusBorderColor="teal.400"
             type="text"
-            name="name"
+            name="password"
           />
         </FormControl>
         <Button
