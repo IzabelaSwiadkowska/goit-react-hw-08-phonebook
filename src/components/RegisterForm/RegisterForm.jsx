@@ -7,7 +7,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { Form } from 'react-router-dom';
-import { styles } from './RegisterForm.styled';
+
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/actions';
 
@@ -28,7 +28,7 @@ function RegisterForm() {
   };
 
   return (
-    <Container sx={styles}>
+    <Container>
       <Form onSubmit={handleSubmit}>
         <Text fontSize="3xl">Create a new Phonebook account</Text>
         <FormControl>
