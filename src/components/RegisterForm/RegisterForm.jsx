@@ -4,7 +4,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Text,
 } from '@chakra-ui/react';
 import { Form } from 'react-router-dom';
 
@@ -30,7 +29,6 @@ function RegisterForm() {
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <Text fontSize="3xl">Create a new Phonebook account</Text>
         <FormControl>
           <FormLabel fontSize={20} p="10px" mb="10px">
             Username

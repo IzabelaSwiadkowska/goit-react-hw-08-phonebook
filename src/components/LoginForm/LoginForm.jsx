@@ -1,53 +1,46 @@
-import {
-  Button,
-  Container,
-  FormControl,
-  FormLabel,
-  Input,
-  Text,
-} from '@chakra-ui/react';
+import { Button, Box, FormControl, FormLabel, Input } from '@chakra-ui/react';
 import { Form } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/actions';
 
-function LoginForm() {
+export const LoginForm = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      logIn({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
+  };
+
   return (
-    <Container>
-      <Form>
-        <Text fontSize={30}> Login to your Phonebook acount</Text>
-        <FormControl>
-          <FormLabel fontSize={20} p="10px" mb="10px">
-            Email
-          </FormLabel>
-          <Input
-            placeholder="enter your email"
-            focusBorderColor="teal.400"
-            type="text"
-            name="name"
-          />
-
-          <FormLabel fontSize={20} p="10px" mb="10px">
-            Password
-          </FormLabel>
-          <Input
-            placeholder="enter your password"
-            focusBorderColor="teal.400"
-            type="text"
-            name="name"
-          />
-        </FormControl>
-        <Button
-          mt="20px"
-          bgColor={'teal.100'}
-          _hover={{
-            background: 'teal.300',
-            color: 'white',
-          }}
-          type="submit"
-        >
-          Log In
-        </Button>
-      </Form>
-    </Container>
+    <Box as="form" onSubmit={handleSubmit} py="4" mx="auto">
+      <FormControl id="email" isRequired>
+        <FormLabel _focus={{ color: 'blue.600' }}>Email</FormLabel>
+        <Input
+          placeholder="* Enter your email adress"
+          width="100%"
+          type="email"
+          name="email"
+        />
+      </FormControl>
+      <FormControl mt="10px" id="password" isRequired>
+        <FormLabel _focus={{ color: 'blue.600' }}>Password</FormLabel>
+        <Input
+          placeholder="* Enter your password"
+          width="100%"
+          type="password"
+          name="password"
+        />
+      </FormControl>
+      <Button mt="20px" colorScheme="blue" variant="solid" type="submit">
+        Log In
+      </Button>
+    </Box>
   );
-}
-
-export default LoginForm;
+};

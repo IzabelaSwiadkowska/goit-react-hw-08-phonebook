@@ -1,20 +1,20 @@
-import { Heading, HStack, Spacer } from '@chakra-ui/react';
-import { NavLink, Outlet } from 'react-router-dom';
-import { SNavLink } from './RootLayout.staled';
+import { Box, Heading, HStack, Spacer } from '@chakra-ui/react';
+import { Outlet } from 'react-router-dom';
+import { AuthNav } from '../AuthNav/AuthNav';
+import background from '../../images/background.jpg';
+import { Navigation } from '../Navigation/Navigation';
 
 export default function RootLayout() {
   return (
-    <>
+    <Box bgImage={background} h="100vh" bgSize="cover" bgRepeat="no-repeat">
       <Heading>
-        <NavLink to="/">HOME</NavLink>
+        <Navigation />
 
         <Spacer />
-        <HStack spacing="20px">
-          <SNavLink to="register">Register</SNavLink>
-          <SNavLink to="login">Log In</SNavLink>
-        </HStack>
+        <HStack spacing="20px"></HStack>
+        <AuthNav />
       </Heading>
       <Outlet />
-    </>
+    </Box>
   );
 }

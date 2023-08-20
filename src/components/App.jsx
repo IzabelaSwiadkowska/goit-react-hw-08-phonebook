@@ -7,19 +7,18 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import RootLayout from 'components/RootLayout/RootLayout';
-import RegisterForm from './RegisterForm/RegisterForm';
-import LoginForm from './LoginForm/LoginForm';
 import NotFound from '../pages/NotFound';
 import { Box } from '@chakra-ui/react';
-import background from '../images/background.jpg';
+import { Login } from 'pages/Login';
+import { Register } from 'pages/Register';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="contacts" element={<Contacts />} />
-      <Route path="register" element={<RegisterForm />} />
-      <Route path="login" element={<LoginForm />} />
+      <Route path="register" element={<Register />} />
+      <Route path="login" element={<Login />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )
@@ -27,7 +26,7 @@ const router = createBrowserRouter(
 
 export const App = () => {
   return (
-    <Box bgImage={background}>
+    <Box>
       <RouterProvider router={router} />
     </Box>
   );
