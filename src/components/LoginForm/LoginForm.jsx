@@ -65,6 +65,7 @@ export const LoginForm = () => {
         />
       </FormControl>
       <Button
+        size={{ base: 'md', lg: 'lg' }}
         mt="20px"
         bg="teal.400"
         color="white"
@@ -75,7 +76,7 @@ export const LoginForm = () => {
           transform: 'scale(1.1)',
           border: '1px solid white',
         }}
-        ml={{ base: '110px', md: '300px', lg: '330px' }}
+        ml={{ base: '110px', md: '300px', lg: '360px' }}
         type="submit"
       >
         Log In
