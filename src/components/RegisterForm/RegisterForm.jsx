@@ -1,16 +1,8 @@
-import {
-  Button,
-  Container,
-  FormControl,
-  FormLabel,
-  Input,
-} from '@chakra-ui/react';
-import { Form } from 'react-router-dom';
-
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/actions';
+import { register } from 'redux/auth/operations';
+import { Input, Button, FormControl, FormLabel, Box } from '@chakra-ui/react';
 
-function RegisterForm() {
+export const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -27,52 +19,93 @@ function RegisterForm() {
   };
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit}>
-        <FormControl>
-          <FormLabel fontSize={20} p="10px" mb="10px">
-            Username
-          </FormLabel>
-          <Input
-            placeholder="enter your name"
-            focusBorderColor="teal.400"
-            type="text"
-            name="name"
-          />
-          <FormLabel fontSize={20} p="10px" mb="10px">
-            Email
-          </FormLabel>
-          <Input
-            placeholder="enter your email"
-            focusBorderColor="teal.400"
-            type="text"
-            name="email"
-          />
+    <Box as="form" onSubmit={handleSubmit} py="4" mx="auto">
+      <FormControl
+        w={{ base: '300px', md: '700px', lg: '768px' }}
+        display="flex"
+        m="10px"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        id="name"
+        isRequired
+      >
+        <FormLabel fontSize={{ base: '20px', md: '25px', lg: '30px' }}>
+          Username
+        </FormLabel>
+        <Input
+          fontSize={{ base: '15px', md: '20px', lg: '25px' }}
+          type="text"
+          name="name"
+          focusBorderColor="teal.600"
+          placeholder="Enter user name"
+          autoComplete="off"
+        />
+      </FormControl>
+      <FormControl
+        w={{ base: '300px', md: '700px', lg: '768px' }}
+        display="flex"
+        m="10px"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        mt="10px"
+        id="email"
+        isRequired
+      >
+        <FormLabel fontSize={{ base: '20px', md: '25px', lg: '30px' }}>
+          Email
+        </FormLabel>
+        <Input
+          type="email"
+          name="email"
+          focusBorderColor="teal.600"
+          fontSize={{ base: '15px', md: '20px', lg: '25px' }}
+          placeholder="Enter email"
+          autoComplete="off"
+        />
+      </FormControl>
+      <FormControl
+        w={{ base: '300px', md: '700px', lg: '768px' }}
+        m="10px"
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        mt="10px"
+        id="password"
+        isRequired
+      >
+        <FormLabel fontSize={{ base: '20px', md: '25px', lg: '30px' }}>
+          Password
+        </FormLabel>
+        <Input
+          fontSize={{ base: '15px', md: '20px', lg: '25px' }}
+          type="password"
+          name="password"
+          focusBorderColor="teal.600"
+          placeholder="Enter password"
+          autoComplete="off"
+        />
+      </FormControl>
 
-          <FormLabel fontSize={20} p="10px" mb="10px">
-            Password
-          </FormLabel>
-          <Input
-            placeholder="enter your password"
-            focusBorderColor="teal.400"
-            type="text"
-            name="password"
-          />
-        </FormControl>
-        <Button
-          mt="20px"
-          bgColor={'teal.100'}
-          _hover={{
-            background: 'teal.300',
-            color: 'white',
-          }}
-          type="submit"
-        >
-          Register
-        </Button>
-      </Form>
-    </Container>
+      <Button
+        size={{ base: 'md', lg: 'lg' }}
+        mt="20px"
+        bg="teal.400"
+        color="white"
+        borderRadius="10px"
+        _hover={{
+          bgColor: 'teal.500',
+          color: 'white',
+          transform: 'scale(1.1)',
+          border: '1px solid white',
+        }}
+        ml={{ base: '110px', md: '300px', lg: '360px' }}
+        type="submit"
+      >
+        Register
+      </Button>
+    </Box>
   );
-}
-
-export default RegisterForm;
+};

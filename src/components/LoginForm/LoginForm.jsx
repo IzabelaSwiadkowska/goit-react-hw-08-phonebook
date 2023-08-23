@@ -1,7 +1,6 @@
-import { Button, Box, FormControl, FormLabel, Input } from '@chakra-ui/react';
-import { Form } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logIn } from 'redux/auth/actions';
+import { logIn } from 'redux/auth/operations';
+import { FormControl, FormLabel, Input, Button, Box } from '@chakra-ui/react';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -20,25 +19,65 @@ export const LoginForm = () => {
 
   return (
     <Box as="form" onSubmit={handleSubmit} py="4" mx="auto">
-      <FormControl id="email" isRequired>
-        <FormLabel _focus={{ color: 'blue.600' }}>Email</FormLabel>
+      <FormControl
+        w={{ base: '300px', md: '700px', lg: '768px' }}
+        display="flex"
+        m="10px"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        id="email"
+        isRequired
+      >
+        <FormLabel fontSize={{ base: '20px', md: '25px', lg: '30px' }}>
+          Email
+        </FormLabel>
         <Input
-          placeholder="* Enter your email adress"
-          width="100%"
+          focusBorderColor="teal.600"
+          fontSize={{ base: '15px', md: '20px', lg: '25px' }}
           type="email"
           name="email"
+          placeholder="Enter email"
+          autoComplete="off"
         />
       </FormControl>
-      <FormControl mt="10px" id="password" isRequired>
-        <FormLabel _focus={{ color: 'blue.600' }}>Password</FormLabel>
+      <FormControl
+        w={{ base: '300px', md: '700px', lg: '768px' }}
+        display="flex"
+        m="10px"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        mt="10px"
+        id="password"
+        isRequired
+      >
+        <FormLabel fontSize={{ base: '20px', md: '25px', lg: '30px' }}>
+          Password
+        </FormLabel>
         <Input
-          placeholder="* Enter your password"
-          width="100%"
+          focusBorderColor="teal.600"
+          fontSize={{ base: '15px', md: '20px', lg: '25px' }}
           type="password"
           name="password"
+          placeholder="Enter password"
+          autoComplete="off"
         />
       </FormControl>
-      <Button mt="20px" colorScheme="blue" variant="solid" type="submit">
+      <Button
+        mt="20px"
+        bg="teal.400"
+        color="white"
+        borderRadius="10px"
+        _hover={{
+          bgColor: 'teal.500',
+          color: 'white',
+          transform: 'scale(1.1)',
+          border: '1px solid white',
+        }}
+        ml={{ base: '110px', md: '300px', lg: '330px' }}
+        type="submit"
+      >
         Log In
       </Button>
     </Box>
